@@ -27,6 +27,7 @@
       "main.js",
       "preload.js",
       "renderer/**/*",
+      "icons/Icons/**/*",
       "package.json"
     ],
     "win": {
