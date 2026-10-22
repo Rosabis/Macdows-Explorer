@@ -7,9 +7,9 @@
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder --publish never",
-    "dist:win": "electron-builder --win --publish never",
-    "dist:mac": "electron-builder --mac --publish never",
-    "dist:linux": "electron-builder --linux --publish never"
+    "dist:win": "electron-builder --win --x64 --publish never",
+    "dist:mac": "electron-builder --mac --arm64 --publish never",
+    "dist:linux": "electron-builder --linux --x64 --publish never"
   },
   "author": "Arthur",
   "license": "MIT",
@@ -33,14 +33,12 @@
     "win": {
       "icon": "build/icon.ico",
       "target": [
-        "nsis",
-        "zip"
+        "portable"
       ]
     },
     "mac": {
       "icon": "build/icon.icns",
       "target": [
-        "dmg",
         "zip"
       ],
       "category": "public.app-category.productivity"
@@ -48,8 +46,7 @@
     "linux": {
       "icon": "build/icon.png",
       "target": [
-        "AppImage",
-        "deb"
+        "AppImage"
       ],
       "category": "Utility"
     }

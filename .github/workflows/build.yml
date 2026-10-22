@@ -51,21 +51,21 @@ jobs:
       - name: Install dependencies
         run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
 
-      - name: Build (Windows)
+      - name: Build (Windows x64 绿色版)
         if: runner.os == 'Windows'
-        run: npx electron-builder --win --publish never
+        run: npx electron-builder --win --x64 --publish never
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
 
-      - name: Build (macOS x64 + arm64)
+      - name: Build (macOS arm64 绿色版)
         if: runner.os == 'macOS'
-        run: npx electron-builder --mac --x64 --arm64 --publish never
+        run: npx electron-builder --mac --arm64 --publish never
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
 
-      - name: Build (Linux)
+      - name: Build (Linux x64 绿色版)
         if: runner.os == 'Linux'
-        run: npx electron-builder --linux --publish never
+        run: npx electron-builder --linux --x64 --publish never
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -74,7 +74,5 @@ jobs:
           path: |
             dist/*.exe
             dist/*.zip
-            dist/*.dmg
             dist/*.AppImage
-            dist/*.deb
           if-no-files-found: error
